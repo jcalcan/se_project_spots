@@ -1,54 +1,76 @@
 .profile {
   display: flex;
-  padding: 34px 0 20px;
+  padding-top: 34px;
+  padding-bottom: 20px;
   border-bottom: 1px rgba(33, 33, 33, 0.4) solid;
+  width: 100%;
+  align-items: flex-start;
+  box-sizing: border-box;
 }
 
 .profile__avatar {
   margin-right: 20px;
   border-radius: 9.11px;
+  width: auto;
+  height: 100%;
+  object-fit: cover;
 }
 
 .profile__column {
   display: flex;
   flex-direction: column;
+  width: 420px;
 }
 
 .profile__name {
   margin: 0 0 12px;
-  font-family: "Poppins", sans-serif;
+  font-family: Poppins, sans-serif;
   font-weight: 500;
   font-size: 36.44px;
-  line-height: 36.44px;
+  line-height: 32px;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  max-height: calc(32px * 1.2 * 3);
 }
 
 .profile__description {
   margin: 0;
-  font-family: "Poppins", sans-serif;
+  font-family: Poppins, sans-serif;
   font-weight: 500;
   font-size: 18.22px;
-  line-height: 18.22px;
+  line-height: 16px;
   color: rgba(33, 33, 33, 0.7);
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  max-height: calc(16px * 1.2 * 3);
 }
 
-.profile__edit-btn {
-  margin-top: auto;
-  font-family: "Poppins", sans-serif;
+button.profile__edit-btn {
+  margin-top: 18px;
+  font-family: Poppins, sans-serif;
   font-weight: 500;
-  font-size: 18.22px;
-  line-height: 18.22px;
-  background: #fcf5e5;
+  font-size: 16px;
+  line-height: 16px;
+  background-color: transparent;
 
-  color: rgba(33, 33, 33, 0.7);
   display: inline-flex;
   border-style: none;
   gap: 9.11px;
-  height: 18px;
+  width: 18.48px;
+  height: 3.21px;
+  text-wrap: nowrap;
+  align-items: flex-start;
 }
-.profile__add-btn {
+button.profile__add-btn {
   margin-top: auto;
   margin-left: auto;
-  font-family: "Poppins", sans-serif;
+  font-family: Poppins, sans-serif;
   font-weight: 500;
   font-size: 18.22px;
   line-height: 18.22px;
@@ -61,4 +83,96 @@
   justify-content: center;
   align-items: center;
   gap: 9.11px;
+}
+button.profile__edit-btn .text {
+  opacity: 0.7;
+}
+button.profile__edit-btn:hover .text {
+  cursor: pointer;
+  opacity: 1;
+}
+button.profile__edit-btn .icon {
+  opacity: 0.7;
+}
+
+button.profile__edit-btn:hover .icon {
+  cursor: pointer;
+  opacity: 1;
+}
+button.profile__add-btn:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 627px) {
+  .profile {
+    display: flex;
+    padding: 20px 0px 20px;
+    border-bottom: 1px rgba(33, 33, 33, 0.4) solid;
+    flex-direction: column;
+    width: 288px;
+  }
+  .profile__name {
+    align-self: center;
+    margin: 12px 0px 6px;
+
+    font-family: Poppins, sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 20px;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    text-align: left;
+    overflow: hidden;
+  }
+  .profile__description {
+    align-self: center;
+    margin: 0;
+    padding: 0;
+    font-family: Poppins, sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 16px;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    text-align: left;
+    overflow: hidden;
+  }
+
+  .profile__avatar {
+    margin: 0px 104px;
+    border-radius: 8px;
+    height: 80px;
+    width: 80px;
+    align-self: center;
+  }
+  .profile__column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0px 0px 20px;
+    padding: 0px;
+    width: 100%;
+  }
+  button.profile__edit-btn {
+    padding: 10px 20px;
+    margin: 0;
+    margin-top: 32px;
+    align-self: center;
+    justify-content: center;
+  }
+
+  button.profile__add-btn {
+    align-self: center;
+    width: 288px;
+    height: 52px;
+    padding: 0;
+    border-radius: 8px;
+    gap: 8px;
+    line-height: 16px;
+  }
 }
