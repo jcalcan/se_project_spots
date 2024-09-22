@@ -24,7 +24,7 @@
 
 .profile__name {
   margin: 0 0 12px;
-  font-family: Poppins, sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 500;
   font-size: 36.44px;
   line-height: 32px;
@@ -38,7 +38,7 @@
 
 .profile__description {
   margin: 0;
-  font-family: Poppins, sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 500;
   font-size: 18.22px;
   line-height: 16px;
@@ -53,7 +53,7 @@
 
 button.profile__edit-btn {
   margin-top: 18px;
-  font-family: Poppins, sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 500;
   font-size: 16px;
   line-height: 1;
@@ -70,7 +70,7 @@ button.profile__edit-btn {
 button.profile__add-btn {
   margin-top: auto;
   margin-left: auto;
-  font-family: Poppins, sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 500;
   font-size: 18.22px;
   line-height: 18.22px;
@@ -115,32 +115,18 @@ button.profile__add-btn:hover {
   .profile__name {
     align-self: center;
     margin: 12px 0px 6px;
-
-    font-family: Poppins, sans-serif;
-    font-weight: 500;
     font-size: 20px;
     line-height: 20px;
     display: -webkit-box;
-    text-overflow: ellipsis;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
     text-align: left;
-    overflow: hidden;
   }
   .profile__description {
     align-self: center;
     margin: 0;
     padding: 0;
-    font-family: Poppins, sans-serif;
-    font-weight: 500;
     font-size: 16px;
-    line-height: 16px;
     display: -webkit-box;
-    text-overflow: ellipsis;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
     text-align: left;
-    overflow: hidden;
   }
 
   .profile__avatar {
@@ -151,8 +137,6 @@ button.profile__add-btn:hover {
     align-self: center;
   }
   .profile__column {
-    display: flex;
-    flex-direction: column;
     align-items: center;
     margin: 0px 0px 20px;
     padding: 0px;
