@@ -58,7 +58,6 @@ button.profile__edit-btn {
   font-size: 16px;
   line-height: 1;
   background-color: transparent;
-
   display: inline-flex;
   border-style: none;
   gap: 9.11px;
@@ -83,25 +82,42 @@ button.profile__add-btn {
   justify-content: center;
   align-items: center;
   gap: 9.11px;
+  transition: opacity 0.3s ease;
 }
-button.profile__edit-btn .text {
+
+.profile__edit-btn-text {
+  margin: 0;
+  padding: 0;
   opacity: 0.7;
+  transition: opacity 0.3s ease;
 }
-button.profile__edit-btn:hover .text {
+
+button.profile__edit-btn::before {
+  content: url(../images/pencil.svg);
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+button.profile__edit-btn:hover::before,
+button.profile__edit-btn:hover .profile__edit-btn-text {
   cursor: pointer;
   opacity: 1;
 }
-button.profile__edit-btn .icon {
+button.profile__edit-btn .profile__column-icon {
   opacity: 0.7;
 }
 
-button.profile__edit-btn:hover .icon {
+button.profile__edit-btn:hover .profile__column-icon {
   cursor: pointer;
   opacity: 1;
 }
+button.profile__add-btn::before {
+  content: url(../images/plus_sign.svg);
+}
+
 button.profile__add-btn:hover {
   cursor: pointer;
   opacity: 0.8;
+  transition: opacity 0.3s ease;
 }
 
 @media screen and (max-width: 627px) {

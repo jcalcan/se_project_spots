@@ -8,3 +8,7 @@
   line-height: 16px;
   color: rgba(33, 33, 33, 0.7);
 }
+.footer__copywrite {
+  margin: 0;
+  padding: 0;
+}
