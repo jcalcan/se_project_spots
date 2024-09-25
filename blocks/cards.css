@@ -16,9 +16,9 @@
   justify-content: center;
 }
 
-@media screen and (max-width: 627px) {
+@media screen and (max-width: 413px) {
   .cards__pics {
-    padding: 0px 0px 40px;
-    justify-content: flex-start;
+    padding: 0px 0px 20px;
+    grid-template-columns: 1fr;
   }
 }
