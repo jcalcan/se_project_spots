@@ -25,7 +25,7 @@ This project was fun and challenging. I used minimal media queries as mostly the
 Spots is a site that allows you to add pictures of places you have visited. You can upload your phot, bio and description of yourself. The site is designed to function on any browser- mobile or desktop. No need to install special extensions. Plans to improve the project includes archiving photos feature, adding location maps of where the photo was taken, and a section for you to write a narrative of the photo along with the title.
 
 **Github link**
-https://github.com/jcalcan/se_project_coffeeshop
+https://jcalcan.github.io/se_project_spots/
 
 **Images and screenshots**
 Photo showcase of the design of the site in different dimensions for various devices. For example,
