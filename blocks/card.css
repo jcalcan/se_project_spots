@@ -2,12 +2,10 @@
   box-sizing: border-box;
   margin: 0;
   max-width: 413px;
-  max-height: 445px;
 }
 .card__content {
   display: flex;
   flex-direction: column;
-  overflow: hidden;
   margin: 0;
 }
 
@@ -38,13 +36,12 @@
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  max-width: 353px;
 }
-button.card__footer-heart-btn {
+.card__footer-heart-btn {
   margin: 0;
   padding: 0;
   background-image: url(../images/heart.svg);
-  border: 2px;
-  color: rgba(33, 33, 33, 0.4);
   display: inline-flex;
   border-style: none;
   background-color: transparent;
@@ -53,31 +50,21 @@ button.card__footer-heart-btn {
   opacity: 40%;
   transition: opacity 0.3s ease;
 }
-button.card__footer-heart-btn:hover {
+.card__footer-heart-btn:hover {
   cursor: pointer;
-  background-image: url(../images/heart_Hover.svg);
   opacity: 1;
-  transition: opacity 0.3s ease;
 }
 
 @media screen and (max-width: 627px) {
   .card {
-    box-sizing: border-box;
-    margin: 0;
     max-width: 288px;
-    max-height: 318px;
   }
   .card__image {
-    border-radius: 8px;
-    margin: 0;
-    padding: 0;
-    object-fit: cover;
     height: 288px;
   }
   .card__footer-title {
     font-size: 16px;
     -webkit-line-clamp: 1;
-    text-overflow: ellipsis;
-    overflow: hidden;
+    line-height: 16px;
   }
 }
