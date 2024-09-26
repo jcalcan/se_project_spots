@@ -59,10 +59,10 @@
   display: inline-flex;
   border-style: none;
   gap: 9.11px;
-  width: 23px;
+  width: 107.34px;
   height: 16px;
   text-wrap: nowrap;
-  align-items: flex-start;
+  align-items: center;
   color: #212121;
   opacity: 0.7;
   transition: opacity 0.3s ease;
@@ -92,13 +92,11 @@
   opacity: 0.7;
   transition: opacity 0.3s ease;
 }
-.profile__edit-btn .profile__column-icon {
+.profile__edit-btn {
   opacity: 0.7;
 }
-.profile__edit-btn:hover::before,
-.profile__edit-btn:hover,
-.profile__edit-btn-text,
-.profile__column-icon {
+
+.profile__edit-btn:hover {
   cursor: pointer;
   opacity: 1;
 }
