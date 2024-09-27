@@ -91,9 +91,6 @@
   content: url(../images/pencil.svg);
   opacity: 0.7;
 }
-.profile__edit-btn {
-  opacity: 0.7;
-}
 
 .profile__edit-btn:hover {
   cursor: pointer;
