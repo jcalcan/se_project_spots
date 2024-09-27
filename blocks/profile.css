@@ -90,7 +90,6 @@
 .profile__edit-btn::before {
   content: url(../images/pencil.svg);
   opacity: 0.7;
-  transition: opacity 0.3s ease;
 }
 .profile__edit-btn {
   opacity: 0.7;
