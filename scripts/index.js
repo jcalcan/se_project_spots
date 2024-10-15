@@ -66,7 +66,7 @@ for (let i = 0; i < initialCards.length; i++) {
     .querySelector("#card")
     .content.querySelector(".card")
     .cloneNode(true);
-  console.log(initialCards[i]);
+
   cardElement.querySelector(".card__image").src = initialCards[i].link;
   cardElement.querySelector(".card__image").alt = initialCards[i].name;
   cardElement.querySelector(".card__footer-title").textContent =
