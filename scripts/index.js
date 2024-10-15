@@ -56,21 +56,23 @@ function inputNameDescriptionFormSubmit(evt) {
   closeModal();
 }
 
+function getCardElement(data) {
+  let cardElement = document
+    .querySelector("#card")
+    .content.querySelector(".card")
+    .cloneNode(true);
+
+  cardElement.querySelector(".card__image").src = data.link;
+  cardElement.querySelector(".card__image").alt = data.name;
+  cardElement.querySelector(".card__footer-title").textContent = data.name;
+  cardContentContainer.append(cardElement);
+}
+
 profileEditButton.addEventListener("click", openModal);
 
 closeModalButton.addEventListener("click", closeModal);
 submitModalButton.addEventListener("click", inputNameDescriptionFormSubmit);
 
 for (let i = 0; i < initialCards.length; i++) {
-  let cardElement = document
-    .querySelector("#card")
-    .content.querySelector(".card")
-    .cloneNode(true);
-
-  cardElement.querySelector(".card__image").src = initialCards[i].link;
-  cardElement.querySelector(".card__image").alt = initialCards[i].name;
-  cardElement.querySelector(".card__footer-title").textContent =
-    initialCards[i].name;
-
-  cardContentContainer.append(cardElement);
+  getCardElement(initialCards[i]);
 }
