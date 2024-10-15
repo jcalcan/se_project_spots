@@ -36,6 +36,8 @@ const profileUserName = document.querySelector(".profile__name");
 const profileUserDescription = document.querySelector(".profile__description");
 const submitModalButton = editProfileModal.querySelector(".modal__submit-btn");
 
+let cardContentContainer = document.querySelector(".cards__pics");
+
 function openModal() {
   editProfileModal.classList.add("modal_opened");
   profileNameInput.value = profileUserName.textContent;
@@ -58,3 +60,17 @@ profileEditButton.addEventListener("click", openModal);
 
 closeModalButton.addEventListener("click", closeModal);
 submitModalButton.addEventListener("click", inputNameDescriptionFormSubmit);
+
+for (let i = 0; i < initialCards.length; i++) {
+  let cardElement = document
+    .querySelector("#card")
+    .content.querySelector(".card")
+    .cloneNode(true);
+  console.log(initialCards[i]);
+  cardElement.querySelector(".card__image").src = initialCards[i].link;
+  cardElement.querySelector(".card__image").alt = initialCards[i].name;
+  cardElement.querySelector(".card__footer-title").textContent =
+    initialCards[i].name;
+
+  cardContentContainer.append(cardElement);
+}
