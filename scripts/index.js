@@ -31,7 +31,6 @@ const editProfileModal = document.querySelector("#edit-modal");
 const addPostModal = document.querySelector("#add-card-modal");
 const closeModalButton = editProfileModal.querySelector(".modal__close-btn");
 const closePostModalButton = addPostModal.querySelector(".modal__close-btn");
-const cardHeartButton = document.querySelector(".card__footer-heart-btn");
 
 const profileNameInput = editProfileModal.querySelector("#name");
 const profileDescriptionInput = editProfileModal.querySelector("#description");
@@ -45,6 +44,10 @@ const addModalFormLink = addModalForm.querySelector("#add-card-link-input");
 const addModalFormCaption = addModalForm.querySelector("#add-card-name-input");
 
 let cardContentContainer = document.querySelector(".cards__pics");
+
+const cardHeartButton = cardContentContainer.querySelector(
+  ".card__footer-heart-btn"
+);
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
@@ -94,6 +97,12 @@ function getCardElement(data) {
   return cardElement;
 }
 
+function handleLikeButton(event) {
+  event.preventDefault();
+
+  event.target.classList.toggle("card__footer-heart-btn-liked");
+}
+
 profileEditButton.addEventListener("click", () => {
   profileNameInput.value = profileUserName.textContent;
   profileDescriptionInput.value = profileUserDescription.textContent;
@@ -114,7 +123,12 @@ closePostModalButton.addEventListener("click", () => {
 
 saveModalForm.addEventListener("submit", handleProfileFormSubmit);
 addModalForm.addEventListener("submit", handlePostFormSubmit);
-cardHeartButton.addEventListener("click", handlePostFormSubmit);
+
+cardContentContainer.addEventListener("click", function (event) {
+  if (event.target.classList.contains("card__footer-heart-btn")) {
+    handleLikeButton(event);
+  }
+});
 
 initialCards.forEach((item) => {
   cardContentContainer.append(getCardElement(item));

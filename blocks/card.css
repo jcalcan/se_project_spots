@@ -52,9 +52,29 @@
   opacity: 40%;
   transition: opacity 0.3s ease;
 }
+
 .card__footer-heart-btn:hover {
   cursor: pointer;
   opacity: 1;
+}
+
+.card__footer-heart-btn-liked {
+  margin: 0;
+  padding: 0;
+  background-image: url(../images/heart-liked.svg);
+  display: inline-flex;
+  border-style: none;
+  background-color: transparent;
+  width: 22px;
+  height: 20px;
+  border: 1px;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.card__footer-heart-btn-liked:hover {
+  cursor: pointer;
+  opacity: 0.5;
 }
 
 @media screen and (max-width: 627px) {
