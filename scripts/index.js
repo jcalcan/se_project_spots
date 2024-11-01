@@ -103,6 +103,18 @@ function handleLikeButton(event) {
   event.target.classList.toggle("card__footer-heart-btn-liked");
 }
 
+function handleDeleteButton(event) {
+  event.preventDefault();
+  const cardElement = event.target.closest(".card");
+  const cardImage = cardElement.querySelector(".card__image");
+  const cardName = cardImage.alt;
+
+  const index = initialCards.findIndex((card) => card.name === cardName);
+
+  initialCards.toSpliced(1, index);
+  cardElement.remove();
+}
+
 profileEditButton.addEventListener("click", () => {
   profileNameInput.value = profileUserName.textContent;
   profileDescriptionInput.value = profileUserDescription.textContent;
@@ -127,6 +139,9 @@ addModalForm.addEventListener("submit", handlePostFormSubmit);
 cardContentContainer.addEventListener("click", function (event) {
   if (event.target.classList.contains("card__footer-heart-btn")) {
     handleLikeButton(event);
+  }
+  if (event.target.classList.contains("card__trash-btn")) {
+    handleDeleteButton(event);
   }
 });
 
