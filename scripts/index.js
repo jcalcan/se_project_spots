@@ -1,5 +1,9 @@
 const initialCards = [
   {
+    name: "Golden Gate Bridge",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/7-photo-by-griffin-wooldridge-from-pexels.jpg",
+  },
+  {
     name: "Val Thorens",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/1-photo-by-moritz-feldmann-from-pexels.jpg",
   },
@@ -29,8 +33,10 @@ const profileEditButton = document.querySelector(".profile__edit-btn");
 const addPostButton = document.querySelector(".profile__add-btn");
 const editProfileModal = document.querySelector("#edit-modal");
 const addPostModal = document.querySelector("#add-card-modal");
+const imageZoomModal = document.querySelector("#card-image-modal");
 const closeModalButton = editProfileModal.querySelector(".modal__close-btn");
 const closePostModalButton = addPostModal.querySelector(".modal__close-btn");
+const closeZoomModalButton = imageZoomModal.querySelector(".modal__close-btn");
 
 const profileNameInput = editProfileModal.querySelector("#name");
 const profileDescriptionInput = editProfileModal.querySelector("#description");
@@ -115,6 +121,27 @@ function handleDeleteButton(event) {
   cardElement.remove();
 }
 
+function openImageModal(event) {
+  event.preventDefault();
+  const cardElement = event.target.closest(".card");
+
+  const cardImage = cardElement.querySelector(".card__image");
+
+  const modalImage = document.querySelector(".modal__image");
+  const modalCaption = cardElement.querySelector(".card__footer-title");
+
+  const modalFooterCaption = document.querySelector(
+    ".modal__image-footer-title"
+  );
+  modalFooterCaption.textContent = modalCaption.textContent;
+  console.log(modalFooterCaption.textContent);
+
+  modalImage.src = "";
+
+  openModal(imageZoomModal);
+
+  modalImage.src = cardImage.src;
+}
 profileEditButton.addEventListener("click", () => {
   profileNameInput.value = profileUserName.textContent;
   profileDescriptionInput.value = profileUserDescription.textContent;
@@ -133,6 +160,10 @@ closePostModalButton.addEventListener("click", () => {
   closeModal(addPostModal);
 });
 
+closeZoomModalButton.addEventListener("click", () => {
+  closeModal(imageZoomModal);
+});
+
 saveModalForm.addEventListener("submit", handleProfileFormSubmit);
 addModalForm.addEventListener("submit", handlePostFormSubmit);
 
@@ -142,6 +173,10 @@ cardContentContainer.addEventListener("click", function (event) {
   }
   if (event.target.classList.contains("card__trash-btn")) {
     handleDeleteButton(event);
+  }
+
+  if (event.target.classList.contains("card__image")) {
+    openImageModal(event);
   }
 });
 

@@ -20,11 +20,42 @@
 
 .modal__container {
   background-color: #ffffff;
-  padding: 32px 50px;
+  padding: 32px 50px 32px;
   max-width: 730px;
   width: 100%;
   box-sizing: border-box;
   position: relative;
+
+  border-radius: 8px;
+}
+
+.modal__container-image {
+  position: absolute;
+  top: 81px;
+  display: inline-flex;
+  flex-direction: column;
+
+  overflow: visible;
+  align-items: flex-start;
+
+  justify-content: center;
+  background-color: transparent;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 80vw;
+
+  gap: 8px;
+  width: auto;
+  height: auto;
+}
+.modal__image {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+
   border-radius: 8px;
 }
 
@@ -38,7 +69,20 @@
   opacity: 0.4;
   border: none;
   background-color: #fff;
+  cursor: pointer;
 }
+
+.modal__image-close-btn {
+  top: 0;
+  right: 0;
+  transform: translate(calc(100% + 12.5px), 0);
+
+  background-image: url(../images/x-close-btn.svg);
+  opacity: 1;
+  background-size: cover;
+  background-color: transparent;
+}
+
 .modal__close-btn:hover {
   opacity: 1;
 }
@@ -94,6 +138,23 @@
   background: rgb(0, 0, 0, 0.8);
   cursor: pointer;
 }
+.modal__image-footer-title {
+  margin: 0;
+  padding: 4px 8px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.2;
+  color: #fff;
+  background-color: #212121;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 100%;
+  border-radius: 8px;
+  align-self: flex-start;
+  box-sizing: border-box;
+}
 
 @media screen and (max-width: 627px) {
   .modal {
@@ -119,7 +180,22 @@
   }
   .modal__input {
     margin: 0;
-
     font-size: 16px;
+  }
+  .modal__container-image {
+    width: auto;
+    max-width: calc(100% - 8px);
+  }
+  .modal__image {
+    width: auto;
+    max-width: 100%;
+  }
+
+  .modal__image-footer-title {
+    font-size: 16px;
+    line-height: 1;
+  }
+  .modal__image-close-btn {
+    transform: translate(0, -41px);
   }
 }
