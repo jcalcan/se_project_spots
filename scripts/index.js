@@ -49,6 +49,7 @@ const addModalForm = document.querySelector("#add-card-form");
 const addModalFormLink = addModalForm.querySelector("#add-card-link-input");
 const addModalFormCaption = addModalForm.querySelector("#add-card-name-input");
 const modalImage = document.querySelector(".modal__image");
+const modalFooterCaption = document.querySelector(".modal__image-footer-title");
 
 const cardContentContainer = document.querySelector(".cards__pics");
 
@@ -75,7 +76,7 @@ function handleProfileFormSubmit(evt) {
 function handlePostFormSubmit(evt) {
   evt.preventDefault();
 
-  let newCard = {
+  const newCard = {
     name: addModalFormCaption.value,
     link: addModalFormLink.value,
   };
@@ -92,7 +93,7 @@ function handlePostFormSubmit(evt) {
 }
 
 function getCardElement(data) {
-  let cardElement = document
+  const cardElement = document
     .querySelector("#card")
     .content.querySelector(".card")
     .cloneNode(true);
@@ -116,8 +117,7 @@ function getCardElement(data) {
     handleDeleteButton(cardElement);
   });
 
-  const cardPreviewImage = cardElement.querySelector(".card__image");
-  cardPreviewImage.addEventListener("click", () => {
+  cardImage.addEventListener("click", () => {
     openImageModal(cardElement);
   });
 
@@ -140,9 +140,6 @@ function openImageModal(cardEl) {
   const cardImage = cardEl.querySelector(".card__image");
   const modalCaption = cardEl.querySelector(".card__footer-title");
 
-  const modalFooterCaption = document.querySelector(
-    ".modal__image-footer-title"
-  );
   modalFooterCaption.textContent = modalCaption.textContent;
 
   modalImage.src = "";
