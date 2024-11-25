@@ -38,8 +38,10 @@ const profileCloseButton = editProfileModal.querySelector(".modal__close-btn");
 const closePostModalButton = addPostModal.querySelector(".modal__close-btn");
 const closeZoomModalButton = imageZoomModal.querySelector(".modal__close-btn");
 
-const profileNameInput = editProfileModal.querySelector("#name");
-const profileDescriptionInput = editProfileModal.querySelector("#description");
+const profileNameInput = editProfileModal.querySelector("#modal__input");
+const profileDescriptionInput = editProfileModal.querySelector(
+  "#modal__description"
+);
 
 const profileUserName = document.querySelector(".profile__name");
 const profileUserDescription = document.querySelector(".profile__description");
@@ -70,7 +72,10 @@ function handleProfileFormSubmit(evt) {
 
   profileUserName.textContent = profileNameInput.value;
   profileUserDescription.textContent = profileDescriptionInput.value;
+
   closeModal(editProfileModal);
+  profileNameInput.value = "";
+  profileDescriptionInput.value = "";
 }
 
 function handlePostFormSubmit(evt) {
@@ -151,8 +156,6 @@ function openImageModal(cardEl) {
 }
 
 profileEditButton.addEventListener("click", () => {
-  profileNameInput.value = profileUserName.textContent;
-  profileDescriptionInput.value = profileUserDescription.textContent;
   openModal(editProfileModal);
 });
 

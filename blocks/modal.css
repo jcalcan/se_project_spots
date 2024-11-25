@@ -159,6 +159,23 @@
   align-self: flex-start;
   box-sizing: border-box;
 }
+.modal__input_type_error {
+  border-bottom-color: red;
+  border: 1px solid red;
+}
+
+.modal__input-error_active {
+  opacity: 0.7;
+}
+
+.modal__submit-btn_inactive {
+  opacity: 0.5;
+  pointer-events: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
 
 @media screen and (max-width: 627px) {
   .modal {

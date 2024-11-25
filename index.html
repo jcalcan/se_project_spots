@@ -23,14 +23,8 @@
             class="profile__avatar"
           />
           <div class="profile__column">
-            <h1 class="profile__name">
-              Aliaune Damala Bouga Time Bongo Puru Nacka Lu Lu Lu Badara Akon...
-            </h1>
-            <p class="profile__description">
-              Known mononymously as Akon (/ˈeɪkɒn/), is a Senegalese-American
-              singer, record producer, and entrepreneur. An influential figure
-              in modern world...
-            </p>
+            <h1 class="profile__name">Bessie Coleman</h1>
+            <p class="profile__description">Civil Aviator</p>
             <button type="button" class="profile__edit-btn">
               Edit Profile
             </button>
@@ -62,24 +56,32 @@
         <div class="modal__container">
           <button type="button" class="modal__close-btn"></button>
           <h2 class="modal__title">Edit Profile</h2>
-          <form name="edit-profile" class="modal__form">
+          <form name="edit-profile" class="modal__form" novalidate>
             <label for="name" class="modal__label">
               Name
               <input
-                id="name"
+                id="modal__input"
                 type="text"
                 class="modal__input"
                 placeholder="Type your name"
+                required
+                minlength="2"
+                maxlength="40"
               />
+              <span class="modal__input-error"></span>
             </label>
             <label for="description" class="modal__label">
               Description
               <input
-                id="description"
+                id="modal__description"
                 type="text"
                 class="modal__input"
                 placeholder="Describe yourself"
+                required
+                minlength="2"
+                maxlength="200"
               />
+              <span class="modal__description-error"></span>
             </label>
             <button type="submit" class="modal__submit-btn">Save</button>
           </form>
@@ -90,7 +92,7 @@
         <div class="modal__container">
           <button type="submit" class="modal__close-btn"></button>
           <h3 class="modal__title">New Post</h3>
-          <form id="add-card-form" class="modal__form">
+          <form id="add-card-form" class="modal__form" novalidate>
             <label for="add-card-link-input" class="modal__label">
               Image link
               <input
@@ -99,7 +101,10 @@
                 class="modal__input"
                 name="link"
                 placeholder="Place a link to the picture"
+                required
+                minlength="13"
               />
+              <span class="add-card-link-input-error"></span>
             </label>
             <label for="add-card-name-input" class="modal__label">
               Caption
@@ -109,7 +114,12 @@
                 class="modal__input"
                 name="name"
                 placeholder="Type your caption"
+                required
+                minlength="2"
+                maxlength="30"
               />
+
+              <span class="add-card-name-input-error"></span>
             </label>
             <button type="submit" class="modal__submit-btn">Save</button>
           </form>
@@ -129,5 +139,6 @@
     </div>
 
     <script defer src="./scripts/index.js"></script>
+    <script defer src="./scripts/validation.js"></script>
   </body>
 </html>
