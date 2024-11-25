@@ -63,4 +63,7 @@ const toggleButtonState = (inputList, buttonElement) => {
   }
 };
 
+// const closeModalListener = (formElement) => {
+//   const modalList = Array.from(formElement.querySelectorAll(".modal"));
+// };
 enableValidation();

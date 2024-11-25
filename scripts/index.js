@@ -76,6 +76,12 @@ function handleProfileFormSubmit(evt) {
   closeModal(editProfileModal);
   profileNameInput.value = "";
   profileDescriptionInput.value = "";
+
+  const inputList = Array.from(
+    editProfileModal.querySelectorAll(".modal__input")
+  );
+  const buttonElement = editProfileModal.querySelector(".modal__submit-btn");
+  toggleButtonState(inputList, buttonElement);
 }
 
 function handlePostFormSubmit(evt) {
@@ -95,6 +101,10 @@ function handlePostFormSubmit(evt) {
 
   addModalFormCaption.value = "";
   addModalFormLink.value = "";
+
+  const inputList = Array.from(addPostModal.querySelectorAll(".modal__input"));
+  const buttonElement = addPostModal.querySelector(".modal__submit-btn");
+  toggleButtonState(inputList, buttonElement);
 }
 
 function getCardElement(data) {
