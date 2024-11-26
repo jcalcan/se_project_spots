@@ -61,6 +61,7 @@ const cardHeartButton = cardContentContainer.querySelector(
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
+  closeModalListener();
 }
 
 function closeModal(modal) {
@@ -184,6 +185,18 @@ closePostModalButton.addEventListener("click", () => {
 closeZoomModalButton.addEventListener("click", () => {
   closeModal(imageZoomModal);
 });
+
+const closeModalListener = () => {
+  const modalList = document.querySelectorAll(".modal_opened");
+
+  modalList.forEach((modalElement) => {
+    modalElement.addEventListener("click", (event) => {
+      if (event.target === modalElement) {
+        closeModal(modalElement);
+      }
+    });
+  });
+};
 
 profileForm.addEventListener("submit", handleProfileFormSubmit);
 addModalForm.addEventListener("submit", handlePostFormSubmit);
