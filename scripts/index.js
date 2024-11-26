@@ -62,10 +62,15 @@ const cardHeartButton = cardContentContainer.querySelector(
 function openModal(modal) {
   modal.classList.add("modal_opened");
   closeModalListener();
+  document.addEventListener("keydown", closeModalEscapeListener);
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
+  const openModals = document.querySelectorAll(".modal_opened");
+  if (openModals.length === 0) {
+    document.removeEventListener("keydown", closeModalEscapeListener);
+  }
 }
 
 function handleProfileFormSubmit(evt) {
@@ -196,6 +201,15 @@ const closeModalListener = () => {
       }
     });
   });
+};
+
+const closeModalEscapeListener = (event) => {
+  if (event.key === "Escape") {
+    const openModals = document.querySelectorAll(".modal_opened");
+    openModals.forEach((modalElement) => {
+      closeModal(modalElement);
+    });
+  }
 };
 
 profileForm.addEventListener("submit", handleProfileFormSubmit);

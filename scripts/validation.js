@@ -1,8 +1,14 @@
+const settings = {
+  formSelector: ".modal__form",
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
+};
+
 const showInputError = (formElement, inputElement, errorMessage) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-
-  console.log(`.${inputElement.id}-error`);
-  console.log(errorMessage);
 
   inputElement.classList.add("modal__input_type_error");
   errorElement.textContent = errorMessage;
@@ -37,7 +43,7 @@ const setEventListeners = (formElement) => {
   });
 };
 
-const enableValidation = () => {
+const enableValidation = (settings) => {
   const formList = Array.from(document.querySelectorAll(".modal__form"));
 
   formList.forEach((formElement) => {
@@ -63,4 +69,4 @@ const toggleButtonState = (inputList, buttonElement) => {
   }
 };
 
-enableValidation();
+enableValidation(settings);
