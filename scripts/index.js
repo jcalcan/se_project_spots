@@ -87,7 +87,7 @@ function handleProfileFormSubmit(evt) {
     editProfileModal.querySelectorAll(".modal__input")
   );
   const buttonElement = editProfileModal.querySelector(".modal__submit-btn");
-  toggleButtonState(inputList, buttonElement);
+  toggleButtonState(inputList, buttonElement, settings);
 }
 
 function handlePostFormSubmit(evt) {
@@ -110,7 +110,7 @@ function handlePostFormSubmit(evt) {
 
   const inputList = Array.from(addPostModal.querySelectorAll(".modal__input"));
   const buttonElement = addPostModal.querySelector(".modal__submit-btn");
-  toggleButtonState(inputList, buttonElement);
+  toggleButtonState(inputList, buttonElement, settings);
 }
 
 function getCardElement(data) {
