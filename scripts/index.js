@@ -59,18 +59,26 @@ const cardHeartButton = cardContentContainer.querySelector(
   ".card__footer-heart-btn"
 );
 
+const closeModalListener = () => {
+  document.body.addEventListener("click", (event) => {
+    if (event.target.classList.contains("modal_opened")) {
+      closeModal(event.target);
+    }
+  });
+};
+
 function openModal(modal) {
   modal.classList.add("modal_opened");
-  closeModalListener();
+
+  profileNameInput.value = profileUserName.textContent;
+  profileDescriptionInput.value = profileUserDescription.textContent;
   document.addEventListener("keydown", closeModalEscapeListener);
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
-  const openModals = document.querySelectorAll(".modal_opened");
-  if (openModals.length === 0) {
-    document.removeEventListener("keydown", closeModalEscapeListener);
-  }
+
+  document.removeEventListener("keydown", closeModalEscapeListener);
 }
 
 function handleProfileFormSubmit(evt) {
@@ -80,13 +88,12 @@ function handleProfileFormSubmit(evt) {
   profileUserDescription.textContent = profileDescriptionInput.value;
 
   closeModal(editProfileModal);
-  profileNameInput.value = "";
-  profileDescriptionInput.value = "";
 
   const inputList = Array.from(
     editProfileModal.querySelectorAll(".modal__input")
   );
   const buttonElement = editProfileModal.querySelector(".modal__submit-btn");
+
   toggleButtonState(inputList, buttonElement, settings);
 }
 
@@ -191,24 +198,10 @@ closeZoomModalButton.addEventListener("click", () => {
   closeModal(imageZoomModal);
 });
 
-const closeModalListener = () => {
-  const modalList = document.querySelectorAll(".modal_opened");
-
-  modalList.forEach((modalElement) => {
-    modalElement.addEventListener("click", (event) => {
-      if (event.target === modalElement) {
-        closeModal(modalElement);
-      }
-    });
-  });
-};
-
 const closeModalEscapeListener = (event) => {
   if (event.key === "Escape") {
     const openModals = document.querySelectorAll(".modal_opened");
-    openModals.forEach((modalElement) => {
-      closeModal(modalElement);
-    });
+    openModals.forEach(closeModal);
   }
 };
 
@@ -218,3 +211,5 @@ addModalForm.addEventListener("submit", handlePostFormSubmit);
 initialCards.forEach((item) => {
   cardContentContainer.append(getCardElement(item));
 });
+
+closeModalListener();

@@ -160,6 +160,7 @@
   box-sizing: border-box;
 }
 .modal__input_type_error {
+  color: red;
   border-bottom-color: red;
   border: 1px solid red;
 }
