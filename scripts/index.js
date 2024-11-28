@@ -70,8 +70,6 @@ const closeModalListener = () => {
 function openModal(modal) {
   modal.classList.add("modal_opened");
 
-  profileNameInput.value = profileUserName.textContent;
-  profileDescriptionInput.value = profileUserDescription.textContent;
   document.addEventListener("keydown", closeModalEscapeListener);
 }
 
@@ -93,8 +91,6 @@ function handleProfileFormSubmit(evt) {
     editProfileModal.querySelectorAll(".modal__input")
   );
   const buttonElement = editProfileModal.querySelector(".modal__submit-btn");
-
-  toggleButtonState(inputList, buttonElement, settings);
 }
 
 function handlePostFormSubmit(evt) {
@@ -179,6 +175,13 @@ function openImageModal(cardEl) {
 }
 
 profileEditButton.addEventListener("click", () => {
+  profileNameInput.value = profileUserName.textContent;
+  profileDescriptionInput.value = profileUserDescription.textContent;
+  resetValidation(
+    editProfileModal,
+    [profileNameInput, profileDescriptionInput],
+    settings
+  );
   openModal(editProfileModal);
 });
 
