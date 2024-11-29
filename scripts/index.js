@@ -59,17 +59,16 @@ const cardHeartButton = cardContentContainer.querySelector(
   ".card__footer-heart-btn"
 );
 
-const closeModalListener = () => {
-  document.body.addEventListener("click", (event) => {
-    if (event.target.classList.contains("modal_opened")) {
-      closeModal(event.target);
-    }
-  });
+const closeModalListener = (event) => {
+  if (event.target.classList.contains("modal_opened")) {
+    closeModal(event.target);
+    document.body.removeEventListener("click", closeModalListener);
+  }
 };
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
-
+  document.body.addEventListener("click", closeModalListener);
   document.addEventListener("keydown", closeModalEscapeListener);
 }
 
@@ -87,9 +86,6 @@ function handleProfileFormSubmit(evt) {
 
   closeModal(editProfileModal);
 
-  const inputList = Array.from(
-    editProfileModal.querySelectorAll(".modal__input")
-  );
   const buttonElement = editProfileModal.querySelector(".modal__submit-btn");
 }
 
@@ -214,5 +210,3 @@ addModalForm.addEventListener("submit", handlePostFormSubmit);
 initialCards.forEach((item) => {
   cardContentContainer.append(getCardElement(item));
 });
-
-closeModalListener();
