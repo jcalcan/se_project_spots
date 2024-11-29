@@ -62,7 +62,6 @@ const cardHeartButton = cardContentContainer.querySelector(
 const closeModalListener = (event) => {
   if (event.target.classList.contains("modal_opened")) {
     closeModal(event.target);
-    document.body.removeEventListener("click", closeModalListener);
   }
 };
 
@@ -74,7 +73,7 @@ function openModal(modal) {
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
-
+  document.body.removeEventListener("click", closeModalListener);
   document.removeEventListener("keydown", closeModalEscapeListener);
 }
 
@@ -85,8 +84,6 @@ function handleProfileFormSubmit(evt) {
   profileUserDescription.textContent = profileDescriptionInput.value;
 
   closeModal(editProfileModal);
-
-  const buttonElement = editProfileModal.querySelector(".modal__submit-btn");
 }
 
 function handlePostFormSubmit(evt) {
