@@ -8,4 +8,8 @@
 .header__logo {
   width: 94px;
   height: 26px;
+  background-image: url(../images/logo.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }

@@ -9,10 +9,14 @@
 }
 
 .profile__avatar {
+  background-image: url(../images/avatar.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   margin-right: 20px;
   border-radius: 8px;
-  width: auto;
-  height: 100%;
+  width: 190px;
+  height: 190px;
   object-fit: cover;
 }
 
