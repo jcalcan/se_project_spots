@@ -22,7 +22,7 @@ Spots is a project displaying the power of the css. All the elements displayed c
 This project was fun and challenging. I used minimal media queries as mostly the responsive design is made with css display grid. Using too many media requests negatively impacts loading and performance. Bandwith, server strain, mobile performance are all taken into account when designing the app.
 
 **Description and Functionality**
-Spots is a site that allows you to add pictures of places you have visited. You can upload your phot, bio and description of yourself. The site is designed to function on any browser- mobile or desktop. No need to install special extensions. Plans to improve the project includes archiving photos feature, adding location maps of where the photo was taken, and a section for you to write a narrative of the photo along with the title.
+Spots is a site that allows you to add pictures of places you have visited. You can upload your photo, bio and description of yourself. The site is designed to function on any browser- mobile or desktop. No need to install special extensions. Plans to improve the project includes archiving photos feature, adding location maps of where the photo was taken, and a section for you to write a narrative of the photo along with the title.
 
 **Github link**
 https://jcalcan.github.io/se_project_spots/
