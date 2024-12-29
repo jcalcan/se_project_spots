@@ -29,10 +29,10 @@ https://jcalcan.github.io/se_project_spots/
 
 **Images and screenshots**
 Photo showcase of the design of the site in different dimensions for various devices. For example,
-for mobile devices it would look like this - ![mobile](./images/demo/mobile_screenshot.jpg). For tablets like this ![tablets](./images/demo/tablet_screenshot.jpg) and regular desktops like this ![desktop](./images/demo/desktop_screenshot.jpg). The design and code were made with responsive and intuitive to users devices in mind. Easy to use, read and navigate were top priority elevating the users experience with the app.
+for mobile devices it would look like this - ![mobile](./src/images/demo/mobile_screenshot.jpg). For tablets like this ![tablets](./src/images/demo/tablet_screenshot.jpg) and regular desktops like this ![desktop](./src/images/demo/desktop_screenshot.jpg). The design and code were made with responsive and intuitive to users devices in mind. Easy to use, read and navigate were top priority elevating the users experience with the app.
 
 **Video Explanation of the project**
 In this comprehensive video presentation, I showcase the responsive social media app project named 'Spots'. I walk through key aspects of the project, including its overview, layout and responsiveness, use of semantic HTML, implementation of the BEM methodology, CSS structure, and personal challenges and learnings. I explain the project's intuitive design, use of CSS Grid for layout, responsive design techniques, semantic HTML implementation, and the BEM approach to the project. I also discuss my problem-solving process and the valuable skills gained throughout the project's development. This video provides insights into modern web development practices and my growth journey. Enjoy.
-https://youtu.be/umIkuP_4rf4
+[Link to the project on Youtube](https://youtu.be/umIkuP_4rf4)
 
 Good luck and have fun!
