@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode production",
-    "dev": "webpack serve --mode development",
+    "dev": "webpack serve --mode development --env NODE_ENV=development",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
@@ -19,6 +19,7 @@
     "clean-webpack-plugin": "4.0.0",
     "css-loader": "6.7.1",
     "cssnano": "5.1.12",
+    "dotenv-webpack": "^8.1.0",
     "gh-pages": "^6.3.0",
     "html-webpack-plugin": "5.5.0",
     "mini-css-extract-plugin": "2.6.1",
@@ -29,6 +30,7 @@
   },
   "dependencies": {
     "core-js": "3.23.5",
+    "dotenv": "^16.4.7",
     "gh-pages": "^3.1.0"
   }
 }

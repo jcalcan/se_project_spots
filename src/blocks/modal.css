@@ -33,6 +33,13 @@
   border-radius: 8px;
 }
 
+.modal__container-delete {
+  padding: 0 0;
+  margin: 0 0;
+  max-width: 630px;
+  height: 172px;
+}
+
 .modal__container-image {
   position: absolute;
   top: 81px;
@@ -91,11 +98,45 @@
   opacity: 1;
 }
 
+/* delete modal button css */
+.modal__close_delete-btn {
+  position: absolute;
+  top: 32px;
+  right: 50px;
+  width: 40px;
+  height: 40px;
+
+  opacity: 0.4;
+  border: none;
+
+  cursor: pointer;
+}
+
+.modal__image-close_delete-btn {
+  top: 0;
+  right: 0;
+  transform: translate(calc(100% + 12.5px), 0);
+
+  background-image: url(../images/x-close-btn.svg);
+  opacity: 1;
+  background-size: cover;
+  background-color: transparent;
+}
+
 .modal__title {
   margin: 0 0 32px;
   font-weight: 500;
   font-size: 32px;
   line-height: 1;
+}
+
+.modal__title-delete {
+  text-align: center;
+  margin: 32px 20px 32px;
+  font-weight: 500;
+  width: 590px;
+  line-height: 1;
+  font-size: 24px;
 }
 
 .modal__label {
@@ -127,6 +168,45 @@
 }
 .modal__input:placeholder-shown {
   opacity: 0.3;
+}
+.modal__confirm_delete-btn {
+  position: absolute;
+  top: 88px;
+  right: 325px;
+  bottom: 32px;
+  text-align: center;
+
+  width: 156px;
+  padding: 18px 52px 18px;
+  border-radius: 8px;
+  border: none;
+  background-color: #ff6565;
+  color: black;
+  transition: background 0.3s;
+}
+
+.modal__confirm_delete-btn:hover {
+  background: #ff3333;
+  cursor: pointer;
+}
+.modal__confirm_cancel-btn {
+  position: absolute;
+  top: 88px;
+  right: 149px;
+  bottom: 32px;
+  text-align: center;
+
+  width: 156px;
+  border-radius: 8px;
+  border-color: black;
+  background-color: white;
+  transition: background 0.3s;
+}
+
+.modal__confirm_cancel-btn:hover {
+  background: #212121;
+  color: white;
+  cursor: pointer;
 }
 
 .modal__submit-btn {
@@ -187,6 +267,7 @@
   .modal__container {
     padding: 12px;
   }
+
   .modal__title {
     font-size: 20px;
     margin: 10px 0 24px;
@@ -221,5 +302,29 @@
   }
   .modal__image-close-btn {
     transform: translate(0, -41px);
+  }
+  .modal__container-delete {
+    width: 288px;
+    height: 208px;
+  }
+  .modal__confirm_delete-btn {
+    top: 80px;
+    right: 66px;
+    bottom: 76px;
+  }
+  .modal__confirm_cancel-btn {
+    top: 144px;
+    right: 66px;
+    bottom: 12px;
+  }
+  .modal__title-delete {
+    position: absolute;
+    font-size: 20px;
+    width: 264px;
+    margin: 0 auto;
+    overflow-wrap: normal;
+  }
+  .modal__image-close_delete-btn {
+    transform: translateY(-46px);
   }
 }
