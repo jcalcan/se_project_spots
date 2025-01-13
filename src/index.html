@@ -17,7 +17,12 @@
       </header>
       <main class="content">
         <section class="profile page__section">
-          <img id="" class="profile__avatar" />
+          <div id="" class="profile__avatar">
+            <button type="button" class="profile__avatar-edit-btn">
+              Edit Avatar
+            </button>
+          </div>
+
           <div class="profile__column">
             <h1 class="profile__name"></h1>
             <p class="profile__description"></p>
@@ -148,7 +153,32 @@
           <button type="button" class="modal__confirm_cancel-btn">
             Cancel
           </button>
-          <img src="#" alt="" class="modal__image" />
+        </div>
+      </div>
+      <div class="modal" id="avatar-edit-modal">
+        <div class="modal__container modal__container-edit-avatar">
+          <button type="submit" class="modal__close-btn"></button>
+          <h3 class="modal__title-avatar-edit">Edit profile avatar</h3>
+          <form id="edit-avatar-form" class="modal__form" novalidate>
+            <label
+              for="edit-avatar-link-input"
+              class="modal__label_avatar-edit"
+            >
+              Profile Picture
+              <input
+                id="edit-avatar-link-input"
+                type="url"
+                class="modal__input"
+                name="link"
+                placeholder="Paste the link to the image"
+                required
+                minlength="13"
+              />
+              <span class="edit-avatar-link-input-error"></span>
+            </label>
+
+            <button type="submit" class="modal__submit-btn">Save</button>
+          </form>
         </div>
       </div>
     </div>

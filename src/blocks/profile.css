@@ -9,7 +9,7 @@
 }
 
 .profile__avatar {
-  background-image: url(#);
+  position: relative;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -17,9 +17,40 @@
   border-radius: 8px;
   width: 190px;
   height: 190px;
-  object-fit: cover;
 }
 
+.profile__avatar:hover {
+  background-color: rgb(0, 0, 0, 0.8);
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.profile__avatar-edit-btn {
+  visibility: hidden;
+  background-repeat: no-repeat;
+  margin: 162px 39.66px 12px 39px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1;
+  background-color: transparent;
+  display: inline-flex;
+  border-style: none;
+  gap: 9.11px;
+  width: 111.34px;
+  height: 16px;
+  text-wrap: nowrap;
+  align-items: center;
+  color: #ffffff;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+.profile__avatar-edit-btn::before {
+  content: url(../images/pencil_white.svg);
+}
+.profile__avatar:hover .profile__avatar-edit-btn {
+  visibility: visible;
+}
 .profile__column {
   display: flex;
   flex-direction: column;
@@ -163,5 +194,15 @@
     padding: 0;
 
     gap: 8px;
+  }
+  .profile__avatar-edit-btn {
+    visibility: visible;
+    width: 23.34px;
+    height: 23.34px;
+    margin: 52px 4.66px 4.66px 52px;
+    content: url(../images/pencil_white.svg);
+    border-radius: 6px;
+    background-color: #21212199;
+    opacity: 0.6;
   }
 }

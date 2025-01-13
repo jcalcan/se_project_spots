@@ -40,6 +40,15 @@ import {
 const initialCards = [];
 const api = new Api();
 
+const profileAvatarEditModal = document.querySelector("#avatar-edit-modal");
+const profileAvatarCloseButton =
+  profileAvatarEditModal.querySelector(".modal__close-btn");
+const profileAvatarInput = profileAvatarEditModal.querySelector(
+  "#edit-avatar-link-input"
+);
+const profileAvatarSaveButton =
+  profileAvatarEditModal.querySelector(".modal__submit-btn");
+
 const profileEditButton = document.querySelector(".profile__edit-btn");
 const addPostButton = document.querySelector(".profile__add-btn");
 const profileImage = document.querySelector(".profile__avatar");
@@ -102,6 +111,7 @@ function closeModal(modal) {
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
+
   api
     .editUserInfo({
       name: profileNameInput.value,
@@ -111,6 +121,18 @@ function handleProfileFormSubmit(evt) {
       profileUserName.textContent = data.name;
       profileUserDescription.textContent = data.about;
       closeModal(editProfileModal);
+    })
+    .catch(console.error);
+}
+
+function handleProfileEditAvatar(evt) {
+  evt.preventDefault();
+
+  api
+    .updateUserAvatar(profileAvatarInput.value)
+    .then((data) => {
+      profileImage.style.backgroundImage = `url(${data.avatar})`;
+      closeModal(profileAvatarEditModal);
     })
     .catch(console.error);
 }
@@ -251,6 +273,10 @@ profileCloseButton.addEventListener("click", () => {
   closeModal(editProfileModal);
 });
 
+profileAvatarCloseButton.addEventListener("click", () => {
+  closeModal(profileAvatarEditModal);
+});
+
 closePostModalButton.addEventListener("click", () => {
   closeModal(addPostModal);
 });
@@ -265,6 +291,10 @@ closeDeleteModalButton.addEventListener("click", () => {
 
 cancelDeleteModalButton.addEventListener("click", () => {
   closeModal(modalConfirmDelete);
+});
+
+profileAvatarSaveButton.addEventListener("click", (evt) => {
+  handleProfileEditAvatar(evt);
 });
 
 const closeModalEscapeListener = (event) => {
@@ -293,7 +323,13 @@ api
     profileUserName.textContent = userData.name;
     profileUserDescription.textContent = userData.about;
     profileImage.id = userData._id;
+
     profileImage.style.backgroundImage = `url(${userData.avatar})`;
+
+    profileImage.addEventListener("click", () => {
+      openModal(profileAvatarEditModal);
+      //form submit will call will call api.updateUserAvatar(avatar) to update pic
+    });
   })
   .catch(console.error);
 

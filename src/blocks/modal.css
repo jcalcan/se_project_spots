@@ -59,6 +59,12 @@
   width: auto;
   height: auto;
 }
+
+.modal__container-edit-avatar {
+  padding: 32px 50px;
+  margin: 0 auto;
+  max-width: 730px;
+}
 .modal__image {
   display: block;
   width: auto;
@@ -98,7 +104,6 @@
   opacity: 1;
 }
 
-/* delete modal button css */
 .modal__close_delete-btn {
   position: absolute;
   top: 32px;
@@ -137,6 +142,26 @@
   width: 590px;
   line-height: 1;
   font-size: 24px;
+}
+
+.modal__title-avatar-edit {
+  font-weight: 500;
+  width: 630px;
+  line-height: 1;
+  font-size: 32px;
+  margin: 0 0 32px;
+}
+
+.modal__label_avatar-edit {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 32px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 17.6px;
+
+  color: rgba(33, 33, 33, 0.7);
 }
 
 .modal__label {
@@ -326,5 +351,9 @@
   }
   .modal__image-close_delete-btn {
     transform: translateY(-46px);
+  }
+  .modal__title-avatar-edit {
+    font-size: 20px;
+    margin: 5px 0px 12px;
   }
 }
