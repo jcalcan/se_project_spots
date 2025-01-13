@@ -111,16 +111,22 @@ function closeModal(modal) {
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
-
+  const profileDescriptionSaveButton =
+    editProfileModal.querySelector(".modal__submit-btn");
   api
     .editUserInfo({
       name: profileNameInput.value,
       about: profileDescriptionInput.value,
     })
     .then((data) => {
-      profileUserName.textContent = data.name;
-      profileUserDescription.textContent = data.about;
-      closeModal(editProfileModal);
+      profileDescriptionSaveButton.innerText = "Saving...";
+      setTimeout(() => {
+        profileUserName.textContent = data.name;
+        profileUserDescription.textContent = data.about;
+
+        closeModal(editProfileModal);
+        profileDescriptionSaveButton.innerText = "Save";
+      }, 1500);
     })
     .catch(console.error);
 }
@@ -139,6 +145,7 @@ function handleProfileEditAvatar(evt) {
 
 function handlePostFormSubmit(evt) {
   evt.preventDefault();
+  const buttonElement = addPostModal.querySelector(".modal__submit-btn");
 
   api
     .createCard({
@@ -154,11 +161,14 @@ function handlePostFormSubmit(evt) {
         owner: data.owner,
       };
       if (addModalFormCaption.value !== "" && addModalFormLink.value !== "") {
-        initialCards.unshift(newCard);
+        buttonElement.innerText = "Saving...";
+        setTimeout(() => {
+          initialCards.unshift(newCard);
 
-        cardContentContainer.prepend(getCardElement(newCard));
-
-        closeModal(addPostModal);
+          cardContentContainer.prepend(getCardElement(newCard));
+          closeModal(addPostModal);
+          buttonElement.innerText = "Save";
+        }, 1000);
       }
       addModalFormCaption.value = "";
       addModalFormLink.value = "";
@@ -166,7 +176,7 @@ function handlePostFormSubmit(evt) {
       const inputList = Array.from(
         addPostModal.querySelectorAll(".modal__input")
       );
-      const buttonElement = addPostModal.querySelector(".modal__submit-btn");
+
       toggleButtonState(inputList, buttonElement, settings);
     })
     .catch(console.error);
@@ -231,12 +241,17 @@ function handleDeleteButton(cardEl, cardId) {
 
 function confirmCardDelete(cardEl, cardId) {
   modalConfirmDeleteBtn.addEventListener("click", () => {
-    const cardName = cardEl.alt;
-    const index = initialCards.findIndex((card) => card.name === cardName);
-    initialCards.toSpliced(1, index);
-    cardEl.remove();
-    api.deleteCard(cardId);
-    closeModal(modalConfirmDelete);
+    modalConfirmDeleteBtn.innerText = "Deleting...";
+    setTimeout(() => {
+      const cardName = cardEl.alt;
+      const index = initialCards.findIndex((card) => card.name === cardName);
+      initialCards.toSpliced(1, index);
+      cardEl.remove();
+
+      api.deleteCard(cardId);
+      closeModal(modalConfirmDelete);
+      modalConfirmDeleteBtn.innerText = "Delete";
+    }, 1000);
   });
 }
 
@@ -328,7 +343,6 @@ api
 
     profileImage.addEventListener("click", () => {
       openModal(profileAvatarEditModal);
-      //form submit will call will call api.updateUserAvatar(avatar) to update pic
     });
   })
   .catch(console.error);
