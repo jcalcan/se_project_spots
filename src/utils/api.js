@@ -10,7 +10,7 @@ export class Api {
 
   getAppInfo() {
     //call get user info in array
-    return Promise.all([this.getAllCards()]);
+    return Promise.all([this.getUserInfo(), this.getAllCards()]);
   }
 
   getAllCards() {
