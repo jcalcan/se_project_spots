@@ -64,32 +64,29 @@ const cardHeartButton = cardContentContainer.querySelector(
 );
 
 const closeModalListener = (event) => {
-  if (event.target.classList.contains("modal_opened")) {
-    closeModal(event.target);
+  if (event.target === event.currentTarget) {
+    closeModal(event.currentTarget);
   }
 };
 
-function closeModalOverlay(evt, modal, callback) {
-  if (evt.target === modal) {
-    closeModal(modal, callback);
-  }
-}
-
 function openModal(modal, closeCallBack) {
   modal.classList.add("modal_opened");
-  document.addEventListener("keydown", (e) =>
-    closeModalEscape(e, modal, closeCallBack)
-  );
-  modal.addEventListener("click", (e) =>
-    closeModalOverlay(e, modal, closeCallBack)
-  );
+  modal.addEventListener("click", closeModalListener);
+  modal.closeCallBack = closeCallBack;
+
+  document.addEventListener("keydown", closeModalEscapeListener);
 }
 
-function closeModal(modal, callback) {
+function closeModal(modal) {
   modal.classList.remove("modal_opened");
-  document.body.removeEventListener("click", closeModalListener);
+
+  modal.removeEventListener("click", closeModalListener);
   document.removeEventListener("keydown", closeModalEscapeListener);
-  if (callback) callback();
+
+  if (typeof modal.closeCallBack === "function") {
+    modal.closeCallBack();
+    modal.closeCallBack = null;
+  }
 }
 
 function handleProfileFormSubmit(evt) {
@@ -110,15 +107,13 @@ function handleProfileFormSubmit(evt) {
 }
 
 function handleProfileEditAvatar(evt) {
-  evt.preventDefault();
-
-  api
-    .updateUserAvatar(profileAvatarInput.value)
-    .then((data) => {
+  function makeRequest() {
+    return api.updateUserAvatar(profileAvatarInput.value).then((data) => {
       profileImage.style.backgroundImage = `url(${data.avatar})`;
       closeModal(profileAvatarEditModal);
-    })
-    .catch(console.error);
+    });
+  }
+  handleSubmit(makeRequest, evt);
 }
 
 function handlePostFormSubmit(evt) {
@@ -141,7 +136,6 @@ function handlePostFormSubmit(evt) {
 
           cardContentContainer.prepend(getCardElement(newCard));
           closeModal(addPostModal);
-          buttonElement.innerText = "Save";
         }
         addModalFormCaption.value = "";
         addModalFormLink.value = "";
@@ -151,8 +145,7 @@ function handlePostFormSubmit(evt) {
         );
 
         toggleButtonState(inputList, buttonElement, settings);
-      })
-      .catch(console.error);
+      });
   }
   handleSubmit(makeRequest, evt);
 }
@@ -214,10 +207,9 @@ function handleDeleteButton(cardEl, cardId) {
   const removeListener = confirmCardDelete(cardEl, cardId);
   openModal(modalConfirmDelete, removeListener);
 
-  closeDeleteModalButton.onclick = () =>
-    closeModal(modalConfirmDelete, removeListener);
-  cancelDeleteModalButton.onclick = () =>
-    closeModal(modalConfirmDelete, removeListener);
+  closeDeleteModalButton.onclick = () => closeModal(modalConfirmDelete);
+
+  cancelDeleteModalButton.onclick = () => closeModal(modalConfirmDelete);
 }
 
 function confirmCardDelete(cardEl, cardId) {
@@ -280,14 +272,6 @@ addPostButton.addEventListener("click", () => {
   openModal(addPostModal);
 });
 
-profileAvatarSaveButton.addEventListener("click", (evt) => {
-  handleProfileEditAvatar(evt);
-});
-
-closeDeleteModalButton.addEventListener("click", () => {
-  closeModal(modalConfirmDelete);
-});
-
 cancelDeleteModalButton.addEventListener("click", () => {
   closeModal(modalConfirmDelete);
 });
@@ -308,6 +292,7 @@ function closeModalEscape(evt, modal, callback) {
 
 profileForm.addEventListener("submit", handleProfileFormSubmit);
 addModalForm.addEventListener("submit", handlePostFormSubmit);
+profileAvatarEditModal.addEventListener("submit", handleProfileEditAvatar);
 
 api
   .getAppInfo()

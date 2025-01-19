@@ -7,6 +7,14 @@ export class Api {
       "Content-type": "application/json",
     };
   }
+  _request(endpoint, options = {}) {
+    const finalOPtions = {
+      headers: this._headers,
+      ...options,
+    };
+    const url = `${this._baseUrl}${endpoint}`;
+    return fetch(url, finalOPtions).then(this._checkResponse);
+  }
 
   getAppInfo() {
     //call get user info in array
@@ -14,62 +22,44 @@ export class Api {
   }
 
   getAllCards() {
-    return fetch(`${this._baseUrl}/cards`, {
-      method: "GET",
-      headers: this._headers,
-    }).then(this._checkResponse);
+    return this._request("/cards", { method: "GET" });
   }
 
   createCard({ name, link }) {
-    return fetch(`${this._baseUrl}/cards`, {
+    return this._request("/cards", {
       method: "POST",
-      headers: this._headers,
       body: JSON.stringify({ name, link }),
-    }).then(this._checkResponse);
+    });
   }
 
   deleteCard(cardId) {
-    return fetch(`${this._baseUrl}/cards/${cardId}`, {
-      method: "DELETE",
-      headers: this._headers,
-    }).then(this._checkResponse);
+    return this._request(`/cards/${cardId}`, { method: "DELETE" });
   }
 
   likeCard(cardId) {
-    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
-      method: "PUT",
-      headers: this._headers,
-    }).then(this._checkResponse);
+    return this._request(`/cards/${cardId}/likes`, { method: "PUT" });
   }
 
   dislikeCard(cardId) {
-    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
-      method: "DELETE",
-      headers: this._headers,
-    }).then(this._checkResponse);
+    return this._request(`/cards/${cardId}/likes`, { method: "DELETE" });
   }
 
   getUserInfo() {
-    return fetch(`${this._baseUrl}/users/me`, {
-      method: "GET",
-      headers: this._headers,
-    }).then(this._checkResponse);
+    return this._request("/users/me", { method: "GET" });
   }
 
   editUserInfo({ name, about }) {
-    return fetch(`${this._baseUrl}/users/me`, {
+    return this._request("/users/me", {
       method: "PATCH",
-      headers: this._headers,
       body: JSON.stringify({ name, about }),
-    }).then(this._checkResponse);
+    });
   }
 
   updateUserAvatar(avatar) {
-    return fetch(`${this._baseUrl}/users/me/avatar`, {
+    return this._request("/users/me/avatar", {
       method: "PATCH",
-      headers: this._headers,
       body: JSON.stringify({ avatar }),
-    }).then(this._checkResponse);
+    });
   }
 
   _checkResponse(res) {
