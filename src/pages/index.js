@@ -12,7 +12,8 @@ const initialCards = [];
 const api = new Api();
 
 const profileAvatarEditModal = document.querySelector("#avatar-edit-modal");
-
+const profileAvatarEditbuttonElement =
+  profileAvatarEditModal.querySelector(".modal__submit-btn");
 const profileAvatarInput = profileAvatarEditModal.querySelector(
   "#edit-avatar-link-input"
 );
@@ -110,6 +111,14 @@ function handleProfileEditAvatar(evt) {
   function makeRequest() {
     return api.updateUserAvatar(profileAvatarInput.value).then((data) => {
       profileImage.style.backgroundImage = `url(${data.avatar})`;
+
+      profileAvatarInput.value = "";
+      const inputList = Array.from(
+        profileAvatarEditModal.querySelectorAll(".modal__input")
+      );
+
+      toggleButtonState(inputList, profileAvatarEditbuttonElement, settings);
+
       closeModal(profileAvatarEditModal);
     });
   }
